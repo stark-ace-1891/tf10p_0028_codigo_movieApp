@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
     if (_response.statusCode == 200) {
       Map<String, dynamic> moviesMap = json.decode(_response.body);
       movies = moviesMap["results"];
+      
       setState(() {});
     }
   }
