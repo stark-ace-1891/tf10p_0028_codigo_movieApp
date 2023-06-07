@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ItemMovieWidget extends StatelessWidget {
-  const ItemMovieWidget({super.key});
+  Map movieMap;
+
+  ItemMovieWidget({ required this.movieMap });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class ItemMovieWidget extends StatelessWidget {
         image: DecorationImage(
           fit: BoxFit.cover,
           image: NetworkImage(
-            "https://static.posters.cz/image/1300/posters/the-batman-2022-i122127.jpg",
+            "https://image.tmdb.org/t/p/w500${movieMap["poster_path"]}",
           ),
         ),
         boxShadow: [
@@ -48,7 +50,7 @@ class ItemMovieWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Lorem ipsum dolor sit amet",
+                    movieMap["original_title"],
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -70,7 +72,7 @@ class ItemMovieWidget extends StatelessWidget {
                     height: 8,
                   ),
                   Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    movieMap["overview"],
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -95,7 +97,7 @@ class ItemMovieWidget extends StatelessWidget {
                             width: 6,
                           ),
                           Text(
-                            "2022-02-12",
+                            movieMap["release_date"],
                             style: TextStyle(
                               color: Colors.white,
                             ),
@@ -113,7 +115,7 @@ class ItemMovieWidget extends StatelessWidget {
                             width: 6,
                           ),
                           Text(
-                            "433",
+                            movieMap["vote_count"].toString(),
                             style: TextStyle(
                               color: Colors.white,
                             ),
@@ -139,7 +141,7 @@ class ItemMovieWidget extends StatelessWidget {
                 color: Color(0xff23232d).withOpacity(0.85),
               ),
               child: Text(
-                "4.2",
+                movieMap["vote_average"].toString(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,

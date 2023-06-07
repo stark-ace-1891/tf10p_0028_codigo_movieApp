@@ -12,6 +12,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List movies = [];
 
+  @override
+  initState(){
+    super.initState();
+    getMovies();
+  }
+
   getMovies() async {
     String _url =
         "https://api.themoviedb.org/3/discover/movie?language=en-US&page=1&api_key=35df93a7f9361e1ffbefaccb93e68b28";
@@ -26,7 +32,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    getMovies();
     return Scaffold(
       backgroundColor: Color(0xff23232d),
       body: SafeArea(
@@ -78,9 +83,9 @@ class _HomePageState extends State<HomePage> {
                 ListView.builder(
                   shrinkWrap: true,
                   physics: ScrollPhysics(),
-                  itemCount: 10,
+                  itemCount: movies.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return ItemMovieWidget();
+                    return ItemMovieWidget(movieMap: movies[index],);
                   },
                 ),
               ],
