@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tf10p_0028_codigo_movieapp/ui/general/colors.dart';
 import 'package:tf10p_0028_codigo_movieapp/ui/widgets/line_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
@@ -153,6 +154,64 @@ class DetailPage extends StatelessWidget {
                           color: Colors.white70,
                           fontWeight: FontWeight.normal,
                         ),
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 54,
+                        child: ElevatedButton.icon(
+                          onPressed: () async {
+                            Uri _uri = Uri.parse("https://www.google.com");
+                            await launchUrl(_uri);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: kBrandSecondaryColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          icon: Icon(
+                            Icons.link,
+                            color: Colors.white,
+                          ),
+                          label: Text(
+                            "Home page",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Generes",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      LineWidget(
+                        width: 50,
+                      ),
+                      Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.end,
+                        alignment: WrapAlignment.start,
+                        spacing: 8,
+                        children: [
+                          Chip(
+                            label: Text(
+                              "Crime",
+                            ),
+                          ),
+                          Chip(
+                            label: Text(
+                              "Drama",
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
