@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tf10p_0028_codigo_movieapp/models/movie_model.dart';
+import 'package:tf10p_0028_codigo_movieapp/ui/general/colors.dart';
 
 class ItemMovieWidget extends StatelessWidget {
   MovieModel movieModel;
@@ -46,7 +47,7 @@ class ItemMovieWidget extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                color: Color(0xff23232d).withOpacity(0.85),
+                color: kBrandPrimaryColor.withOpacity(0.85),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -67,7 +68,7 @@ class ItemMovieWidget extends StatelessWidget {
                     width: 100,
                     height: 3.2,
                     decoration: BoxDecoration(
-                      color: Color(0xff09c677),
+                      color: kBrandSecondaryColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),

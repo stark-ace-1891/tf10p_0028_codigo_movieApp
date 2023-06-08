@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:tf10p_0028_codigo_movieapp/models/movie_model.dart';
+import 'package:tf10p_0028_codigo_movieapp/services/api_service.dart';
+import 'package:tf10p_0028_codigo_movieapp/ui/general/colors.dart';
 import 'package:tf10p_0028_codigo_movieapp/ui/widgets/item_movie_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,28 +17,21 @@ class _HomePageState extends State<HomePage> {
   @override
   initState() {
     super.initState();
-    getMovies();
+    getData();
   }
 
-  getMovies() async {
-    String _url =
-        "https://api.themoviedb.org/3/discover/movie?language=en-US&page=1&api_key=35df93a7f9361e1ffbefaccb93e68b28";
-    Uri _uri = Uri.parse(_url);
-    http.Response _response = await http.get(_uri);
-    if (_response.statusCode == 200) {
-      Map<String, dynamic> moviesMap = json.decode(_response.body);
-      movies = moviesMap["results"]
-          .map<MovieModel>((e) => MovieModel.fromJson(e))
-          .toList();
-      print(movies);
+  getData() async {
+    APIService _apiService = APIService();
+    _apiService.getMovies().then((value) {
+      movies = value;
       setState(() {});
-    }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff23232d),
+      backgroundColor: kBrandPrimaryColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
