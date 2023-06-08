@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tf10p_0028_codigo_movieapp/ui/general/colors.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
@@ -10,12 +11,32 @@ class DetailPage extends StatelessWidget {
         slivers: [
           SliverAppBar(
             title: Text(
-              "Hola",
+              "The Batman",
             ),
-            backgroundColor: Colors.indigo,
-            expandedHeight: 200,
-            flexibleSpace: Container(
-              color: Colors.black,
+            backgroundColor: kBrandPrimaryColor,
+            expandedHeight: 220,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image.network(
+                    "https://www.cinemascomics.com/wp-content/uploads/2021/11/51ADA2BC-9F0F-493C-A8C0-A4CAF546053A.jpeg",
+                    fit: BoxFit.cover,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          kBrandPrimaryColor,
+                          kBrandPrimaryColor.withOpacity(0.01),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             pinned: true,
             floating: true,
