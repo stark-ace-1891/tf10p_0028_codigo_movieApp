@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tf10p_0028_codigo_movieapp/models/movie_model.dart';
 import 'package:tf10p_0028_codigo_movieapp/pages/detail_page.dart';
 import 'package:tf10p_0028_codigo_movieapp/ui/general/colors.dart';
+import 'package:tf10p_0028_codigo_movieapp/ui/widgets/line_widget.dart';
 
 class ItemMovieWidget extends StatelessWidget {
   MovieModel movieModel;
@@ -69,14 +70,7 @@ class ItemMovieWidget extends StatelessWidget {
                     SizedBox(
                       height: 6,
                     ),
-                    Container(
-                      width: 100,
-                      height: 3.2,
-                      decoration: BoxDecoration(
-                        color: kBrandSecondaryColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
+                    LineWidget(width: 100,),
                     SizedBox(
                       height: 8,
                     ),
