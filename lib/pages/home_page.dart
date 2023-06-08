@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:tf10p_0028_codigo_movieapp/models/movie_model.dart';
 import 'package:tf10p_0028_codigo_movieapp/ui/widgets/item_movie_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,10 +11,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List movies = [];
+  List<MovieModel> movies = [];
 
   @override
-  initState(){
+  initState() {
     super.initState();
     getMovies();
   }
@@ -25,8 +26,10 @@ class _HomePageState extends State<HomePage> {
     http.Response _response = await http.get(_uri);
     if (_response.statusCode == 200) {
       Map<String, dynamic> moviesMap = json.decode(_response.body);
-      movies = moviesMap["results"];
-      
+      movies = moviesMap["results"]
+          .map<MovieModel>((e) => MovieModel.fromJson(e))
+          .toList();
+      print(movies);
       setState(() {});
     }
   }
@@ -86,7 +89,9 @@ class _HomePageState extends State<HomePage> {
                   physics: ScrollPhysics(),
                   itemCount: movies.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return ItemMovieWidget(movieMap: movies[index],);
+                    return ItemMovieWidget(
+                      movieModel: movies[index],
+                    );
                   },
                 ),
               ],
