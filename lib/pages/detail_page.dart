@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tf10p_0028_codigo_movieapp/ui/general/colors.dart';
+import 'package:tf10p_0028_codigo_movieapp/ui/widgets/item_cast_widget.dart';
 import 'package:tf10p_0028_codigo_movieapp/ui/widgets/line_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -212,6 +213,38 @@ class DetailPage extends StatelessWidget {
                             ),
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Cast",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      LineWidget(
+                        width: 50,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            ItemCastWidget(),
+                            ItemCastWidget(),
+                            ItemCastWidget(),
+                            ItemCastWidget(),
+                            ItemCastWidget(),
+                            ItemCastWidget(),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 70,
                       ),
                     ],
                   ),
