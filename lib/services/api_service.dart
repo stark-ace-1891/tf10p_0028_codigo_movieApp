@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:tf10p_0028_codigo_movieapp/models/movie_detail_model.dart';
 import 'package:tf10p_0028_codigo_movieapp/models/movie_model.dart';
 import 'package:tf10p_0028_codigo_movieapp/utils/constants.dart';
 
@@ -20,7 +21,7 @@ class APIService {
     }
     return movies;
   }
-  getMovie(int movieId) async {
+  Future<MovieDetailModel?> getMovie(int movieId) async {
     MovieModel movie;
     String _url =
         "$pathProduction/movie/$movieId?language=en-US&page=1&api_key=$apiKey";
@@ -28,12 +29,10 @@ class APIService {
     http.Response _response = await http.get(_uri);
     if (_response.statusCode == 200) {
       Map<String, dynamic> movieMap = json.decode(_response.body);
-      print(movieMap);
-      // movie = moviesMap["results"]
-      //     .map<MovieModel>((e) => MovieModel.fromJson(e))
-      //     .toList();
-      // return movie;
+      MovieDetailModel movieDetailModel = MovieDetailModel.fromJson(movieMap);
+      return movieDetailModel;
     }
+    return null;
     // return movie;
   }
 }
