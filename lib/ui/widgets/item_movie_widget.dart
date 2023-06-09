@@ -16,7 +16,14 @@ class ItemMovieWidget extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>DetailPage()));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailPage(
+              movieId: movieModel.id,
+            ),
+          ),
+        );
       },
       child: Container(
         height: height * 0.65,
@@ -70,7 +77,9 @@ class ItemMovieWidget extends StatelessWidget {
                     SizedBox(
                       height: 6,
                     ),
-                    LineWidget(width: 100,),
+                    LineWidget(
+                      width: 100,
+                    ),
                     SizedBox(
                       height: 8,
                     ),
@@ -100,7 +109,9 @@ class ItemMovieWidget extends StatelessWidget {
                               width: 6,
                             ),
                             Text(
-                              movieModel.releaseDate.toString().substring(0,10),
+                              movieModel.releaseDate
+                                  .toString()
+                                  .substring(0, 10),
                               style: TextStyle(
                                 color: Colors.white,
                               ),
